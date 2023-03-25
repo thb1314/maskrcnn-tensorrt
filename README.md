@@ -471,7 +471,7 @@ output: "onnx::Mul_2534"
 name: "MMCVRoiAlign_1931"
 op_type: "MMCVRoiAlign"
 ```
-回报上述算子找不到，这里我们可以写插件支持它，在去年的时候这里的cuda部分我还是抄的onnxruntime的GPU实现，并且没有用到插件实现，而是采用纯cuda的方式。  
+会报上述算子找不到，这里我们可以写插件支持它，在去年的时候这里的cuda部分我还是抄的onnxruntime的GPU实现，并且没有用到插件实现，而是采用纯cuda的方式。  
 幸运的是MMCV除了给我们提供了onnxruntime的自定义算子的实现，也给我们提供了TensorRT不支持算子的插件实现，具体位置在`mmcv/mmcv/ops/csrc/tensorrt` 。由于其提供的插件适配的版本为TRT7.x的，我们需要简单修改适配下，作者已经将是配好的版本放在了`scripts/relaventTensorRTPlugin`中。
 
 
@@ -617,7 +617,7 @@ key: masks, shape: (2, 100, 800, 1216), diff: 1.0
 
 dets出现了NAN，那么哪些层会出输出NAN呢？这个需要我们去获得TensorRT中间层的输出。我们可以采用`polygraphy`，也可以自己写相关代码。本质都是一样，`polygraphy`最后也是通过修改tensorRT network的代码来完成的。
 
-由于TensorRT不能输出int8和bool类型的变量，所以我们需要获取到其他的可以导出的中间层变量的名字。详情见`007run_on_tensorrt_dynamic_shape_fp16.py`
+由于TensorRT不能输出int8和bool类型的变量，所以我们需要获取到其他的可以导出的中间层变量的名字。详情下面的代码。
 
 下面我们我们修改`build_engine`函数，通过修改`network`来获取中间输出
 

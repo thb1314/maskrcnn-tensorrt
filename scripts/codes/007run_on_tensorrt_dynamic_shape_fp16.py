@@ -98,7 +98,7 @@ def build_engine(onnx_file_path, enable_fp16=False, max_batch_size=2, max_worksp
 
     for node in graph.nodes:
         #  'Conv', 'Add', 'Sub', 'Mul', 'Exp', 'Sqrt', 'Log'
-        if node.op in [ 'Concat', 'Add', ]:
+        if node.op in ['Concat', 'Add',]:
             output = node.outputs[0]
             if output.dtype == np.float32:
                 precision_name_list.append(node.name)
