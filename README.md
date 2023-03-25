@@ -1,6 +1,3 @@
----
-comments: true
----
 
 # 基于mmdet的maskrcnn在TensorRT上的端到端部署与精度对齐
 
