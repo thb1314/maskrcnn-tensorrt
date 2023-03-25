@@ -2,7 +2,7 @@
 # 基于mmdet的maskrcnn在TensorRT上的端到端部署与精度对齐
 
 ## 零. 前言
-一直想对去年做的`FasterRCNN+ROiAlign+FPN`在TensorRT上的部署做个升级，之前的版本包含如下缺点：
+一直想对去年做的`FasterRCNN+ROIAlign+FPN`在TensorRT上的部署做个升级，之前的版本包含如下缺点：
 1. 训练代码需要自己编写
 2. 仅支持batch size = 1的推理
 3. 模型将onnx切成两部分来实现（RPN+ROIHead两部分），中间采用了部分cuda实现ROIAlign和ROIHead的NMS，没有做到端到端的部署
@@ -11,7 +11,8 @@
 
 针对如上缺点，笔者决定基于mmdet来给读者展示如何一步步将上面的缺点给解决掉。首先，采用mmdet后训练代码就完全交给了该框架。其次mmcv中包含丰富的TensorRT插件，这样可以解决精度对齐的问题和端到端部署的问题。再者，动态batch的支持问题也已经通过mmdet中的部署经验得到解决。最后，FP16的支持笔者耗费了一些时间来定位误差层，成功解决了FP16输出中含有`nan`的问题。
 
-本文所有源码都在：  
+本文所有源码都在：  https://github.com/thb1314/maskrcnn-tensorrt  
+
 同时，本文对应的视频教程也放进了B站，点此链接进行观看
 
 
