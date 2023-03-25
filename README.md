@@ -11,7 +11,7 @@
 
 针对如上缺点，笔者决定基于mmdet来给读者展示如何一步步将上面的缺点给解决掉。首先，采用mmdet后训练代码就完全交给了该框架。其次mmcv中包含丰富的TensorRT插件，这样可以解决精度对齐的问题和端到端部署的问题。再者，动态batch的支持问题也已经通过mmdet中的部署经验得到解决。最后，FP16的支持笔者耗费了一些时间来定位误差层，成功解决了FP16输出中含有`nan`的问题。
 
-本文所有源码都在：  https://github.com/thb1314/maskrcnn-tensorrt  
+本文所有源码都在： [https://github.com/thb1314/maskrcnn-tensorrt](https://github.com/thb1314/maskrcnn-tensorrt)
 
 同时，本文对应的视频教程也放进了B站，点此链接进行观看
 
