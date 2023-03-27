@@ -13,7 +13,7 @@
 
 本文所有源码都在： [https://github.com/thb1314/maskrcnn-tensorrt](https://github.com/thb1314/maskrcnn-tensorrt)
 
-同时，本文对应的视频教程也放进了B站，点此链接进行观看
+同时，本文对应的视频教程也放进了B站，[点此链接](https://www.bilibili.com/video/BV1Kg4y1s7CD/)进行观看 
 
 
 ## 一. mmdet中的MaskRCNN模型结构
